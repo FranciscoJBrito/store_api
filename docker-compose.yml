@@ -1,0 +1,31 @@
+services:
+  db_store:
+    container_name: store_api_db
+    image: postgres:13.2
+    volumes:
+      - postgresql_store_api:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=postgres
+  store_api:
+    container_name: store_api
+    image: store_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - db_store
+    volumes:
+      - ./:/home/developer/app
+      - bundle_path_store_api:/usr/local/bundle
+    env_file:
+      - .env
+
+volumes:
+  postgresql_store_api:
+  bundle_path_store_api:
+

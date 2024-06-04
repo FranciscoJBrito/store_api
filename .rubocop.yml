@@ -1,0 +1,80 @@
+# .rubocop.yml
+require: rubocop-rails
+
+# AllCops
+# Configuración global para todos los cops
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*' # Excluir todos los archivos en la carpeta bin
+    - 'db/**/*' # Excluir el archivo db/schema.rb
+    - 'public/**/*' # Excluir todos los archivos en la carpeta public
+    - 'config/**/*' # Excluir el archivo config/initializers/bot.rb
+    - 'vendor/**/*' # Excluir todos los archivos en la carpeta vendor
+    - 'node_modules/**/*' # Excluir todos los archivos en la carpeta node_modules
+    - 'lib/tasks/auto_annotate_models.rake' # Excluir el archivo lib/tasks/auto_annotate_models.rake
+    - 'tmp/**/*'
+    - 'storage/**/*'
+
+# Style/Documentation
+# Configuración para la documentación del código
+Style/Documentation:
+  Enabled: false
+
+# Layout/IndentationWidth
+# Configuración para el ancho de indentación
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
+# Style/FrozenStringLiteralComment
+# Configuración para los comentarios de las literales de cadena congeladas
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Layout/TrailingWhitespace
+# Configuración para los espacios en blanco al final de las líneas
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# Layout/LineLength
+# Configuración para la longitud máxima de línea
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+
+# Naming/FileName
+# Configuración para los nombres de archivo
+Naming/FileName:
+  Enabled: true
+  Include:
+    - '**/*.rb' # Incluir todos los archivos Ruby
+
+
+# Metrics/BlockLength
+# Configuración para la longitud de los bloques
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - spec/**/*
+    - '**/routes.rb'
+    - 'config/environments/*'
+    - db/schema.rb
+
+
+# Metrics/MethodLength
+# Configuración para la longitud de los métodos
+Metrics/MethodLength:
+  Max: 19
+
+# Rails
+# Configuración específica para Ruby on Rails
+Rails:
+  Enabled: true
+  Include:
+    - '**/*.rb' # Incluir todos los archivos Ruby
+
+# Lint
+# Configuración para la detección de problemas de estilo y calidad de código
+Lint:
+  Enabled: true
